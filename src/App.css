@@ -1,12 +1,12 @@
+/* background-image: url();
+background-position: center;
+background-size: cover; */
 body {
   font-family: Arial;
   background-color: #f4f4f4;
   padding: 30px;
   color: #333;
   background-color: #253f3fd8;
-  /* background-image: url();
-background-position: center;
-background-size: cover; */
 }
 
 .app {
