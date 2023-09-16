@@ -1,4 +1,3 @@
-// import { PropTypes } from "prop-types"
 
 const Todo = ({ todo }) => {
     return (
@@ -16,7 +15,3 @@ const Todo = ({ todo }) => {
 }
 
 export default Todo
-
-// Todo.propTypes = {
-//     todo: PropTypes.object
-// }.isRequired
