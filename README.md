@@ -36,11 +36,12 @@ Visual Studio Code
 Clone o Projeto no GitHub:
 https://github.com/1andersonmotta/reactTodoList
 Abra o projeto com Visual Studio Code e execute:  
-# Instale os pacotes de dependencia do projeto:  
+# Instale os pacotes de dependencia do projeto:
+Acessar a pasta to_do_list do projeto e pelo terminal execute  
 $ npm install  
 
 # Execute a aplicação:  
-$ npm start
+$ npm run dev
 
 - A Aplicação deverá abrir em seu navegador e estará pronta para uso.
 
