@@ -1,46 +1,67 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Todo from './components/Todo'
 import TodoForm from './components/TodoForm'
 import Search from './components/Search'
 import Filter from './components/Filter'
 
+
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      text: 'Criar funcionalidade X no sistema',
-      category: 'Trabalho',
-      isCompleted: false,
-    },
-    {
-      id: 2,
-      text: 'Ir para academia',
-      category: 'Pessoal',
-      isCompleted: false,
-    },
-    {
-      id: 3,
-      text: 'Estudar REACT',
-      category: 'Estudos',
-      isCompleted: false,
-    },
-  ])
+  const [todos, setTodos] = useState([])
+
 
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('All')
   const [sort, setSort] = useState('Asc')
 
-  const addTodo = (text, category) => {
-    const newTodos = [
-      ...todos,
-      {
-        id: Math.floor(Math.random() * 10000),
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("http://127.0.0.1:3000/");
+        if (res.ok) {
+          const data = await res.json();
+          setTodos(data);
+        } else {
+          console.error('Failed to fetch todos:', res.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching todos:', error);
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array to run this effect only once when component mounts
+
+
+  const addTodo = async (text, category) => {
+    const res = await fetch("http://127.0.0.1:3000/create", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
         text,
         category,
         isCompleted: false,
-      }]
-    setTodos(newTodos)
+      })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      console.log('Data received from server:', data);
+      const newTodos = [
+        ...todos,
+        {
+          // Use o ID retornado pelo servidor
+          text,
+          category,
+          isCompleted: false,
+        }
+      ];
+      setTodos(newTodos);
+    } else {
+      console.error('Failed to add todo:', res.statusText);
+    }
   };
 
   const removeTodo = (id) => {
