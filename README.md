@@ -37,7 +37,7 @@ Clone o Projeto no GitHub:
 https://github.com/1andersonmotta/reactTodoList
 Abra o projeto com Visual Studio Code e execute: 
 
-# Instale os pacotes de dependencia do projeto para o lado do servidor que criara o banco de dados do seu projeto:
+# Instale os pacotes de dependencia do projeto para o lado do servidor que criará o banco de dados do seu projeto:
 Acessar a pasta 'server' do projeto e pelo terminal execute  
 $ npm install  
 
