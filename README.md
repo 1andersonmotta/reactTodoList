@@ -35,8 +35,18 @@ Visual Studio Code
 ## Uso
 Clone o Projeto no GitHub:
 https://github.com/1andersonmotta/reactTodoList
-Abra o projeto com Visual Studio Code e execute:  
-# Instale os pacotes de dependencia do projeto:
+Abra o projeto com Visual Studio Code e execute: 
+
+# Instale os pacotes de dependencia do projeto para o lado do servidor que criara o banco de dados do seu projeto:
+Acessar a pasta 'server' do projeto e pelo terminal execute  
+$ npm install  
+
+# Execute a aplicação:  
+$ npm start
+
+- A Aplicação deverá subir na porta 3000 o lado do servidor com o banco de dados Sqlite.
+
+# Instale os pacotes de dependencia do projeto agora para o lado do Cliente:
 Acessar a pasta to_do_list do projeto e pelo terminal execute  
 $ npm install  
 
