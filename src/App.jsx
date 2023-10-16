@@ -29,7 +29,7 @@ function App() {
     };
 
     fetchData();
-  }, []);
+  }, [todos]);
 
 
   const addTodo = async (text, category) => {
