@@ -45,6 +45,7 @@ $ npm install
 $ npm start
 
 - A Aplicação deverá subir na porta 3000 o lado do servidor com o banco de dados Sqlite.
+- Caso queira visualizar o banco execute no terminal $npx prisma studio.
 
 # Instale os pacotes de dependencia do projeto agora para o lado do Cliente:
 Acessar a pasta to_do_list do projeto e pelo terminal execute  
@@ -60,6 +61,11 @@ $ npm run dev
 - [REACT](https://react.dev/)
 - [NODE](https://nodejs.org/)
 - [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+- [NODE](https://nodejs.org/)
+- [PRISMA](https://www.prisma.io/docs)
+- [SQLITE](https://www.sqlite.org/docs.html)
+- [INSOMNIA](https://insomnia.rest/download)
+- [VISUAL-STUDIO-CODE](https://code.visualstudio.com/)
 
 ## Contribuição
 
