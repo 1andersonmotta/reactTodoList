@@ -9,7 +9,6 @@ import Filter from './components/Filter'
 function App() {
   const [todos, setTodos] = useState([])
 
-
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('All')
   const [sort, setSort] = useState('Asc')
@@ -17,10 +16,10 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:3000/");
+        const res = await fetch("http://127.0.0.1:3000");
         if (res.ok) {
           const data = await res.json();
-          setTodos(data);
+          setTodos(data.data);
         } else {
           console.error('Failed to fetch todos:', res.statusText);
         }
@@ -30,16 +29,19 @@ function App() {
     };
 
     fetchData();
-  }, []); // Empty dependency array to run this effect only once when component mounts
+  }, []);
 
 
   const addTodo = async (text, category) => {
+    const id = Math.random().toString(16)
+
     const res = await fetch("http://127.0.0.1:3000/create", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        id,
         text,
         category,
         isCompleted: false,
@@ -52,7 +54,7 @@ function App() {
       const newTodos = [
         ...todos,
         {
-          // Use o ID retornado pelo servidor
+          id,
           text,
           category,
           isCompleted: false,
@@ -64,13 +66,32 @@ function App() {
     }
   };
 
-  const removeTodo = (id) => {
+  const removeTodo = async (id) => {
+    await fetch(`http://127.0.0.1:3000/deleted`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id,
+      })
+    });
     const newTodos = [...todos]
     const filtreredTodos = newTodos.filter((todo) => todo.id !== id ? todo : null);
     setTodos(filtreredTodos)
   }
 
-  const completeTodo = (id) => {
+  const completeTodo = async (id) => {
+    await fetch(`http://127.0.0.1:3000/completed`, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id,
+      })
+    });
+
     const newTodos = [...todos]
     newTodos.map((todo) => todo.id == id ? todo.isCompleted = !todo.isCompleted : todo)
     setTodos(newTodos)
