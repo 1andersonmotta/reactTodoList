@@ -81,7 +81,7 @@ function App() {
     setTodos(filtreredTodos)
   }
 
-  const completeTodo = async (id) => {
+  const completedTodo = async (id) => {
     await fetch(`http://127.0.0.1:3000/completed`, {
       method: "PUT",
       headers: {
@@ -109,7 +109,7 @@ function App() {
           )
           .sort((a, b) => sort === "Asc" ? a.text.localeCompare(b.text) : b.text.localeCompare(a.text))
           .map((todo) => (
-            <Todo key={todo.id} todo={todo} removeTodo={removeTodo} completeTodo={completeTodo} />
+            <Todo key={todo.id} todo={todo} removeTodo={removeTodo} completeTodo={completedTodo} />
           ))}
       </div>
       <TodoForm addTodo={addTodo} />
