@@ -52,7 +52,7 @@ Acessar a pasta to_do_list do projeto e pelo terminal execute
 $ npm install  
 
 # Execute a aplicação:  
-$ npm run dev
+$ npm start
 
 - A Aplicação deverá abrir em seu navegador e estará pronta para uso.
 
